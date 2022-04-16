@@ -2,7 +2,7 @@
 This is a simple chat app
 
 ## what is ka-chat
-This is a simple chat app, the intention is to make this the backend for the app, it is going to utilize flask to serve the natural web requests and anything that needs long-polling and websockets is going to be handled by eventlet which will work hand in hand with flask-socketio which handles socket connections to implement the realtime effect.
+This is a simple chat app, users will be able to send messages to each other in realtime, the idea is have fullon chat app that messages will be persistent and users can read through a thread to catch up on what happened in the past. Also users will be able to create profiles or user acccounts, change or reset their passwords and will keep adding more features. Having said that it is rather an implementation to learn how to use web sockets.
 
 ## Setup and installation
 Ofcourse if you would like to give this app a run then the first step is to fork or clone this app and then follow the below steps.
@@ -49,8 +49,8 @@ Ofcourse if you would like to give this app a run then the first step is to fork
       FLASK_ENV = "development"
       SECRET_KEY = "yoursecretkey"
       SENDGRID_KEY = "sendgrid api key to assit in sending emails"
-      DATABASE_URL = "postgres://postgres:{your postgres password}@localhost/todos"
-      TEST_DATABASE_URL= "postgres://postgres:{your postgres password}@localhost/todos_test_db"
+      DATABASE_URL = "postgres://postgres:{your postgres password}@localhost/ka_chat"
+      TEST_DATABASE_URL= "postgres://postgres:{your postgres password}@localhost/ka_chat_test_db"
       VERIFY_EMAIL_URL= "{url for your frontend app}/verify"
       PASSWORD_RESET_URL = "{url for your frontend app}/reset"
    ```
@@ -78,23 +78,6 @@ You can run tests to assertain that the setup works
    ```bash
       flask run or python wsgi.py 
    ```
-
-<details>
-<summary>ka-chat endpoints</summary>
-
-METHOD       | ENDPOINT      |  DESCRIPTION
------------- | ------------- | ------------
-POST  |  /users/signup  | signup a user
-POST  |  /users/verify  | verify a user email
-POST  |  /users/signin  | signin a user
-POST  |  /users/forgot  | send reset password link
-PUT   |  /users/update-password |change/update a user password
-
-
-
-</details>
-
-<details open>
 
 Incase of a bug or anything else use any on the below channels to reach me
 
