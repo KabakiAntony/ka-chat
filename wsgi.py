@@ -1,6 +1,5 @@
 from app import create_app
 from flask_socketio import SocketIO, send
-from flask import render_template
 
 app = create_app() 
 socketio = SocketIO(app)
