@@ -41,7 +41,7 @@ def index():
         # so this flash message will be replaced with that
         # but in the mean time this stays for testing purposes.
 
-        return redirect(url_for('login'))
+        return redirect(url_for('users.login'))
   
     return render_template("index.html", form=reg_form)
 
@@ -54,7 +54,7 @@ def login():
         user_object = User.query.filter_by(
             username=login_form.username.data).first()
         login_user(user_object)
-        return redirect(url_for('chat'))
+        return redirect(url_for('users.chat'))
 
     return render_template("login.html", form=login_form)
 
@@ -63,7 +63,7 @@ def login():
 def chat():
     if not current_user.is_authenticated:
         flash('Please login', 'danger')
-        return redirect(url_for('login'))
+        return redirect(url_for('users.login'))
 
     return render_template(
         'chat.html', username=current_user.username, rooms=ROOMS)
@@ -73,4 +73,4 @@ def chat():
 def logout():
     logout_user()
     flash('You have logged out successfully', 'success')
-    return redirect(url_for('login'))
+    return redirect(url_for('users.login'))
