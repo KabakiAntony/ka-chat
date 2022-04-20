@@ -5,15 +5,17 @@
 {% block title %}Registration {% endblock %}
 
 {% block content %}
-    <h1>Registration page</h1>
-    <form action="{{ url_for('users.index') }}", method="POST">
-
-        {{ displayField(form.username, 'Username', autocomplete="off", autofocus=true) }} 
-        {{ displayField(form.email, 'Email')}}
-        {{ displayField(form.password, 'Password') }}
-        <input type="submit" value="Create">
-       
-        {{ form.csrf_token }}
-    </form>
+    <h1>Chatting in realtime is fun, well lets signup to get started.</h1>
+    <div class="form-container">
+        <h2 class="form-header">Signup</h2>
+        <form action="{{ url_for('users.index') }}", method="POST">
+            {{ displayField(form.username, 'Username', autocomplete="off", autofocus=true) }} 
+            {{ displayField(form.email, 'Email')}}
+            {{ displayField(form.password, 'Password') }}
+            <input type="submit" class="submit" value="Create account">
+            {{ form.csrf_token }}
+        </form>
+    </div>
+    
     
 {% endblock %}
