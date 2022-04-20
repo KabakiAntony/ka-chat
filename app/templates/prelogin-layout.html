@@ -5,9 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}:: ka-chat</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main_style.css') }}">
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <div class="container">
+        <nav>
+            <ul class="nav">
+                <li class="logo">Ka-chat</li>
+                <div class="nav-right">
+                    <li><a href="{{ url_for('users.chat') }}">Login</a></li>
+                    <li><a href="{{ url_for('users.index') }}">Signup</a></li>
+                </div>
+            </ul>
+        </nav>
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>
