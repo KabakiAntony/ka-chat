@@ -1,8 +1,32 @@
+{% from 'form_fields_macro.html' import displayField %}
+
 {% extends "prelogin-layout.html" %}
 
-{% block title %}Registration {% endblock %}
+{% block title %}Chat {% endblock %}
 
 {% block content %}
-    <h1>Chat page</h1>
-    {{ form.username }}
+    <div class="chat-wrapper">
+        <div class="rooms-wrapper">
+            <h4>Rooms</h4>
+            {% for room in rooms %}
+                <p id="{{ room|title }}" class="select-room cursor-pointer">{{ room|title }}</p>
+            {% endfor %}</div>
+        <div class="center-wrapper">
+            <div id="display-message-section"></div>
+            <div id="input-area">
+                <input type="text" id="user_message" placeholder="Type your message here..."  autocomplete="off">
+                <button id="send_message"  type="button">SEND</button>
+            </div>
+        </div>
+        <div class="right-wrapper">
+            <div class="form-container">
+                <h4 class="form-header">Create room</h4>
+                <form action="{{ url_for('users.index') }}", method="POST">
+                    {{ displayField(form.room_name, 'Username', autocomplete="off", autofocus=true) }} 
+                    <input type="submit" class="submit" value="Create room">
+                    {{ form.csrf_token }}
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
