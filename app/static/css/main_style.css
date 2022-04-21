@@ -2,7 +2,6 @@
 html,body{
     margin:0;
     padding:0;
-    font-size: 100%;
     height: 100%;
 }
 .container{
@@ -16,7 +15,7 @@ html,body{
 }
 nav{
     display: inline-block;
-    background-color: #75A875;
+    background-color: #479647;
     width: 100%;
     font-weight: bold;
     color:#ffffff;
@@ -52,7 +51,7 @@ a:active{
 }
 .form-container{
     margin: 0 auto;
-    background:#89898E;
+    background: #E4E4E4;
     min-width: 250px;
     width:90%;
     max-width: 350px;
@@ -65,9 +64,9 @@ a:active{
   form{
     padding:30px;
   }
-  .form-header{
+  .form-header, h4{
     text-align:center;
-    background-color: #75A875;
+    background-color: #479647;
     padding: 10px;
     margin:0;
     color: #ffffff;
@@ -80,7 +79,7 @@ a:active{
   }
   .submit{
     font-weight: bold;
-    background-color: #75A875;
+    background-color: #479647;
     border:none;
     text-decoration: none;
     padding: 10px;
@@ -106,3 +105,66 @@ a:active{
   .page-heading{
     margin-bottom: 5%;
   }
+  .chat-wrapper{
+    display: flex;
+    flex-flow: row wrap;
+    width: 95%;
+    justify-content: center;
+    margin:0 auto;
+  }
+  .chat-wrapper > div{
+    margin: 10px;
+    padding: 20px;
+    border:2px solid #479647;
+    border-radius: 0.5em;
+  }
+  .rooms-wrapper{
+    flex-grow: 2;
+  }
+  .center-wrapper{
+    flex-grow: 6;
+  }
+  .right-wrapper{
+    flex-grow: 2;
+  }
+  #display-message-section {
+    min-height: 60vh;
+    max-height: 60vh;
+    overflow-y: auto; /*Make  this section scrolable */
+    background-color: #F0F0F0;
+    border-radius: 0.5em;
+}
+
+#input-area {
+    height: 37px;
+    border:2px solid #479647;
+    border-radius: 0.5em;
+    bottom: 0;
+    display:flex;
+    flex-direction:row;
+    overflow: hidden;
+}
+#user_message{
+    border:none;
+    flex:2;
+    height:auto;
+    height: 35px;
+} 
+#send_message{
+    width: 15%;
+    cursor: pointer;
+    color:#ffffff;
+    background-color: #479647;
+    border: none;
+    height: 35px;
+}
+.cursor-pointer {
+    cursor: pointer;
+    text-align: justify;
+    font-weight:bold;
+}
+.rooms-wrapper p:hover {
+    background-color: #479647;
+    color: #ffffff;
+    text-align: center;
+}
