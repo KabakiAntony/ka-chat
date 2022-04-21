@@ -54,3 +54,9 @@ class UpdatePasswordForm(FlaskForm):
     """ update password form"""
     password = PasswordField('Password', validators=[
         InputRequired(message="Password Required")])
+
+
+class CreateRoomForm(FlaskForm):
+    """ create a new room form"""
+    room_name = StringField('Room_name', validators=[
+        InputRequired(message="Room name is required")])
