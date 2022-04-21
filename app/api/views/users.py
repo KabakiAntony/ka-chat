@@ -6,6 +6,7 @@ from app.api.models import db
 from app.api.models.form_fields import (
     RegistrationForm,
     LoginForm,
+    CreateRoomForm,
     # ResetPasswordLinkForm,
     # UpdatePasswordForm
 )
@@ -61,12 +62,16 @@ def login():
 
 @users.route("/chat", methods=['GET', 'POST'])
 def chat():
-    if not current_user.is_authenticated:
-        flash('Please login', 'danger')
-        return redirect(url_for('users.login'))
+    """ chat route(namespace)"""
+    new_room_form = CreateRoomForm()
+    # if not current_user.is_authenticated:
+    #     flash('Please login', 'danger')
+    #     return redirect(url_for('users.login'))
 
-    return render_template(
-        'chat.html', username=current_user.username, rooms=ROOMS)
+    return render_template('chat.html', form=new_room_form, rooms=ROOMS)
+
+    # return render_template(
+    #     'chat.html', username=current_user.username, rooms=ROOMS)
 
 
 @users.route('/logout', methods=['GET'])
