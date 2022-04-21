@@ -60,6 +60,7 @@ a:active{
     overflow: hidden;
     color:#181818;
     text-align: justify;
+    height: fit-content;
   }
   form{
     padding:30px;
@@ -90,4 +91,18 @@ a:active{
     background-color: #ffffff;
     color: #75A875;
     cursor: pointer;
+  }
+  .wrapper{
+    display: flex;
+    width: 90%;
+    margin:0 auto;
+  }
+  .side-img{
+    width:60%;
+  }
+  .login{
+      margin-top:12%;
+  }
+  .page-heading{
+    margin-bottom: 5%;
   }
