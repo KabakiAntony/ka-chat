@@ -33,7 +33,7 @@ def index():
 
         hashed_pass = pbkdf2_sha256.hash(password)   
 
-        new_user = User(username=username, email=email, password=hashed_pass)
+        new_user = User(username=username, email=email, password_hash=hashed_pass)
         db.session.add(new_user)
         db.session.commit()
 
@@ -64,14 +64,15 @@ def login():
 def chat():
     """ chat route(namespace)"""
     new_room_form = CreateRoomForm()
-    # if not current_user.is_authenticated:
-    #     flash('Please login', 'danger')
-    #     return redirect(url_for('users.login'))
+    if not current_user.is_authenticated:
+        flash('Please login', 'danger')
+        return redirect(url_for('users.login'))
 
-    return render_template('chat.html', form=new_room_form, rooms=ROOMS)
-
-    # return render_template(
-    #     'chat.html', username=current_user.username, rooms=ROOMS)
+    return render_template(
+        'chat.html',
+        form=new_room_form,
+        username=current_user.username, 
+        rooms=ROOMS)
 
 
 @users.route('/logout', methods=['GET'])
