@@ -1,7 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
+from app.api.models import db
 from datetime import datetime
-
-db = SQLAlchemy()
 
 
 class Message(db.Model):
@@ -15,6 +13,7 @@ class Message(db.Model):
     created_on = db.Column(
         db.DateTime, nullable=False, default=datetime.utcnow)
 
-    def __init__(self, name, created_by, created_on):
-        self.name = name
-        self.created_by = created_by
+    def __init__(self, message, room_id, sender_id):
+        self.message = message
+        self.room_id = room_id
+        self.sender_id = sender_id

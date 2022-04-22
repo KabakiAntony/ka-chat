@@ -1,7 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
+from app.api.models import db
 from datetime import datetime
-
-db = SQLAlchemy()
 
 
 class Room(db.Model):
@@ -14,6 +12,6 @@ class Room(db.Model):
     created_on = db.Column(
         db.DateTime, nullable=False, default=datetime.utcnow)
 
-    def __init__(self, name, created_by, created_on):
+    def __init__(self, name, created_by):
         self.name = name
         self.created_by = created_by
