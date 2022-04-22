@@ -11,8 +11,8 @@ class Config(object):
     Testing = False
     Debug = False
 
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL','').replace(
-    #         'postgres://', 'postgresql://')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', '').replace(
+            'postgres://', 'postgresql://')
 
 
 class ProductionConfig(Config):
@@ -27,5 +27,5 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     DEBUG = True
     TESTING = True
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL','').replace(
-    #         'postgres://', 'postgresql://')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL', '').replace(
+            'postgres://', 'postgresql://')
