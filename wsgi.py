@@ -1,23 +1,30 @@
 from app import create_app
-from flask_socketio import SocketIO, send
+from flask_socketio import SocketIO, send, join_room, leave_room
+from time import localtime, strftime
 
-app = create_app() 
+
+app = create_app()
 socketio = SocketIO(app)
 
 
-# @app.route('/')
-# def home_page():
-#     return render_template('index.html')
+@socketio.on('message')
+def message(data):
+    send({'msg': data['msg'], 'username': data['username'], 'time_stamp':
+        strftime('%b-%d %I:%M%p', localtime())}, room=data['room'])
 
 
-# @socketio.on('message')
-# def handleMessage(msg):
-#     send(msg, broadcast=True)
+@socketio.on('join')
+def join(data):
+    join_room(data['room'])
+    send({'msg': data['username'] + "  has joined the " + data['room'] + "  room"}, 
+        room=data['room'])
 
 
-# @socketio.on('disconnect')
-# def handleDisconnect():
-#     send("Someone has left", broadcast=True)
+@socketio.on('leave')
+def leave(data):
+    leave_room(data['room'])
+    send({'msg': data['username'] + "  has left the " + data['room'] + "  room"}, 
+        room=data['room'])
 
 
 if __name__ == "__main__":
