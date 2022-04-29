@@ -26,13 +26,14 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
             span_timestamp.classList.add('timestamp');
 
-            p.innerHTML = span_username.outerHTML + br.outerHTML + data.msg 
-                + br.outerHTML + span_timestamp.outerHTML;
-            
+            p.innerHTML = span_username.outerHTML + span_timestamp.outerHTML +br.outerHTML + data.msg 
+                + br.outerHTML ;
             
 
             document.querySelector("#display-message-section").append(p)
 
+            const display_msg = document.querySelector('#display-message-section')
+            showNewMessage(display_msg); // scroll up for the latest message
 
 
         } else {
@@ -63,6 +64,11 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
     })
 
+   
+    function showNewMessage(node){
+        node.scrollTop = node.scrollHeight
+    }
+
     function leaveRoom(room){
         socket.emit('leave',{'username': username, 'room':room})
     }
@@ -75,6 +81,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     function printSysMsg(msg){
         const p = document.createElement('p');
         p.innerHTML = msg;
+        p.classList.add('system-msg');
         document.querySelector('#display-message-section').append(p);
     }
 })
