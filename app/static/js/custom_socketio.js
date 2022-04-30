@@ -44,9 +44,15 @@ document.addEventListener('DOMContentLoaded',()=>{
     })
 
     document.querySelector("#send_message").onclick = ()=>{
-        socket.send({'msg': document.querySelector("#user_message").value,
-        'username': username, 'room': room });
-        document.querySelector("#user_message").value = '';
+        const the_message = document.querySelector("#user_message").value;
+        if(the_message === ""){
+            document.querySelector("#user_message").focus();
+        }
+        else{
+            socket.send({'msg': the_message,
+            'username': username, 'room': room });
+            document.querySelector("#user_message").value = '';
+        }
     }
 
     document.querySelectorAll('.select-room').forEach(p =>{
