@@ -14,8 +14,12 @@
                 <li class="logo">Ka-chat</li>
                 <div class="nav-right">
                     {% if current_user.is_authenticated %}
-                    <li>Hi&nbsp;&nbsp;<a href="#">{{ current_user.username }}</a></li>
-                    <li><a href="{{ url_for('users.logout') }}">Logout</a></li>
+                    <div class="dropdown">
+                        <p>Hi&nbsp;&nbsp;{{ current_user.username }}</p>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('users.logout') }}">Logout</a>
+                        </div>
+                    </div>
                     {% else %}
                     <li><a href="{{ url_for('users.chat') }}">Login</a></li>
                     <li><a href="{{ url_for('users.index') }}">Signup</a></li>
